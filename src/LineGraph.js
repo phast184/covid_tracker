@@ -2,7 +2,8 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 import { useGlobalContext } from "./context/context";
-import './LineGraph.css'
+import {casesTypeColors} from './utils/helpers'
+import "./LineGraph.css";
 
 const options = {
   legend: {
@@ -49,18 +50,17 @@ const options = {
   },
 };
 
-function LineGraph({ casesType }) {
-  const { historicalCountry } = useGlobalContext();
-
+function LineGraph() {
+  const {historicalCountry, caseType } = useGlobalContext();
   return (
-    <div className = 'graph'>
+    <div className="graph">
       {historicalCountry?.length > 0 && (
         <Line
           data={{
             datasets: [
               {
-                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                borderColor: "#CC1034",
+                backgroundColor: `${casesTypeColors[caseType].half_op}`,
+                borderColor: `${casesTypeColors[caseType].hex}`,
                 data: historicalCountry,
               },
             ],
@@ -69,7 +69,7 @@ function LineGraph({ casesType }) {
         />
       )}
 
-        {historicalCountry.message && (<h3>No data available for this country</h3>)}
+      {historicalCountry.message && <h3>No data available for this country</h3>}
     </div>
   );
 }

@@ -31,18 +31,21 @@ const GlobalContext = React.createContext();
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  /**fetch data of all countries */
   const fetchCountries = async () => {
     let url = "https://disease.sh/v3/covid-19/countries";
     const data = await fetchThings(url);
     dispatch({ type: LOAD_DATA_COUNTRIES, payload: data });
   };
 
+  /**fetch data of worldwide */
   const fetchAll = async () => {
     let url = "https://disease.sh/v3/covid-19/all";
     const data = await fetchThings(url);
     dispatch({ type: LOAD_DATA_ALL, payload: data });
   };
 
+  
   const sortCountries = () => {
     dispatch({ type: SORT_COUNTRIES });
   };
