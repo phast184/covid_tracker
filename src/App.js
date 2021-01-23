@@ -26,7 +26,6 @@ function App() {
     caseType
   } = useGlobalContext();
 
-  console.log(caseType)
   return (
     <div className="app">
       <div className="app__left">
@@ -85,7 +84,7 @@ function App() {
           <div className="app__information">
             <h3>Live Cases By Country</h3>
             <Table></Table>
-            <h3>This is a line graph</h3>
+            <h3 style = {{textTransform: 'capitalize'}}>{countryInput} line graph</h3>
             <LineGraph />
           </div>
         </CardContent>

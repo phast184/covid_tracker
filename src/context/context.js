@@ -70,11 +70,15 @@ export const ContextProvider = ({ children }) => {
         } else {
           url = `https://disease.sh/v3/covid-19/historical/${state.countryInput}?lastdays=120`;
           const data = await fetchThings(url);
-          chartData = buildChartData(data.timeline, state.caseType);
+          if (data.message) {
+            chartData = data; // in case there is no available data, it will return a message
+          } else {
+            chartData = buildChartData(data.timeline, state.caseType);
+          }
         }
         dispatch({ type: LOAD_HISTORICAL_COUNTRY, payload: chartData });
       } catch (error) {
-          console.log(error)
+        console.log(error);
       }
     };
     fetchHistorical();

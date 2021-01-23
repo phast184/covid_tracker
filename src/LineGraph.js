@@ -1,8 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import "./LineGraph.css";
 import numeral from "numeral";
 import { useGlobalContext } from "./context/context";
+import './LineGraph.css'
 
 const options = {
   legend: {
@@ -53,7 +53,7 @@ function LineGraph({ casesType }) {
   const { historicalCountry } = useGlobalContext();
 
   return (
-    <div>
+    <div className = 'graph'>
       {historicalCountry?.length > 0 && (
         <Line
           data={{
@@ -69,6 +69,7 @@ function LineGraph({ casesType }) {
         />
       )}
 
+        {historicalCountry.message && (<h3>No data available for this country</h3>)}
     </div>
   );
 }
