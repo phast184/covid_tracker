@@ -5,7 +5,7 @@ import {
   SORT_COUNTRIES,
   LOAD_DATA_ALL,
   LOAD_HISTORICAL_COUNTRY,
-  SET_CASE_TYPE
+  SET_CASE_TYPE,
 } from "../context/actions";
 const reducer = (state, action) => {
   if (action.type === LOAD_DATA_COUNTRIES) {
@@ -36,12 +36,22 @@ const reducer = (state, action) => {
       return {
         ...state,
         country: state.all,
+        mapCenter: { lat: 34.80746, lng: -40.4796 },
+        mapZoom: 4
       };
     } else {
       const tempCountry = state.countries.filter(
         (country) => country.countryInfo.iso2 === state.countryInput
       );
-      return { ...state, country: tempCountry[0] };
+      return {
+        ...state,
+        country: tempCountry[0],
+        mapCenter: {
+          lat: tempCountry[0].countryInfo.lat,
+          lng: tempCountry[0].countryInfo.long,
+        },
+        mapZoom: 4
+      };
     }
   }
 
@@ -53,19 +63,18 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === LOAD_HISTORICAL_COUNTRY){
-     
-      return{
-        ...state,
-        historicalCountry: action.payload
-    }
+  if (action.type === LOAD_HISTORICAL_COUNTRY) {
+    return {
+      ...state,
+      historicalCountry: action.payload,
+    };
   }
 
-  if (action.type === SET_CASE_TYPE){
-      return{
-          ...state,
-          caseType: action.payload
-      }
+  if (action.type === SET_CASE_TYPE) {
+    return {
+      ...state,
+      caseType: action.payload,
+    };
   }
   return state;
 };

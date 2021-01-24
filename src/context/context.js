@@ -26,11 +26,17 @@ const initialState = {
   countryInput: "worldwide",
   sortedCountries: [],
   historicalCountry: {},
+  mapCenter: {
+    lat: 34.80746,
+    lng: -40.4796,
+  },
+  mapZoom: 3,
 };
 const GlobalContext = React.createContext();
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  console.log(state.mapCenter);
+  console.log(state.mapZoom);
   /**fetch data of all countries */
   const fetchCountries = async () => {
     let url = "https://disease.sh/v3/covid-19/countries";
@@ -45,23 +51,22 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: LOAD_DATA_ALL, payload: data });
   };
 
-  
   const sortCountries = () => {
     dispatch({ type: SORT_COUNTRIES });
   };
 
   const setCountryInput = (e) => {
     dispatch({ type: SET_COUNTRY_INPUT, payload: e.target.value });
+    dispatch({ type: LOAD_DATA_COUNTRY });
   };
 
   const setCaseType = (type) => {
     dispatch({ type: SET_CASE_TYPE, payload: type });
   };
 
-  console.log(state.historicalCountry);
+  console.log(state.mapCenter);
   /**Every time there is a change in inputCountry load new country data */
   useEffect(() => {
-    dispatch({ type: LOAD_DATA_COUNTRY });
     const fetchHistorical = async () => {
       let url = "";
       let chartData;

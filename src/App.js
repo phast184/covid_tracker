@@ -14,6 +14,7 @@ import Table from "./Table";
 import Map from "./Map";
 import LineGraph from './LineGraph'
 import numeral from "numeral";
+import "leaflet/dist/leaflet.css"
 
 function App() {
   // const [country, setCountry] = useState("worldwide");
