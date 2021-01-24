@@ -4,7 +4,7 @@
 }
 
 .infoBox:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
 
 .infoBox--selected--green {
@@ -38,4 +38,11 @@
   font-weight: 700;
   font-size: 0.8 rem;
   margin-top: 15px;
+}
+
+@media (max-width: 400px){
+  .infoBox{
+    
+    margin-bottom: 20px;
+  }
 }
