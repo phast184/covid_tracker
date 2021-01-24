@@ -5,8 +5,7 @@ import "./Map.css";
 import { drawCircle } from "./utils/helpers";
 function Map() {
   const { mapCenter, mapZoom, countries, caseType } = useGlobalContext();
-  console.log(countries);
-  console.log(caseType);
+  console.log(mapCenter)
   return (
     <div className="map">
       <LeafletMap center={mapCenter} zoom={mapZoom}>

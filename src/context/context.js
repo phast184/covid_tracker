@@ -35,8 +35,6 @@ const initialState = {
 const GlobalContext = React.createContext();
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state.mapCenter);
-  console.log(state.mapZoom);
   /**fetch data of all countries */
   const fetchCountries = async () => {
     let url = "https://disease.sh/v3/covid-19/countries";
@@ -64,7 +62,7 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: SET_CASE_TYPE, payload: type });
   };
 
-  console.log(state.mapCenter);
+
   /**Every time there is a change in inputCountry load new country data */
   useEffect(() => {
     const fetchHistorical = async () => {
