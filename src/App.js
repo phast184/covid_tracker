@@ -9,10 +9,10 @@ import {
 
 import { useGlobalContext } from "./context/context";
 import "./App.css";
-import InfoBox from "./InfoBox";
-import Table from "./Table";
-import Map from "./Map";
-import LineGraph from './LineGraph'
+import InfoBox from "./components/InfoBox";
+import Table from "./components/Table";
+import Map from "./components/Map/Map";
+import LineGraph from './components/LineGraph'
 import numeral from "numeral";
 import "leaflet/dist/leaflet.css"
 

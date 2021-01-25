@@ -1,8 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
-import { useGlobalContext } from "./context/context";
-import {casesTypeColors} from './utils/helpers'
+import { useGlobalContext } from "../context/context";
+import {casesTypeColors} from '../utils/helpers'
 import "./LineGraph.css";
 
 const options = {

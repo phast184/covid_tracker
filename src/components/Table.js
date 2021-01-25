@@ -1,7 +1,7 @@
 import React from 'react'
 import './Table.css'
 import numeral from 'numeral'
-import {useGlobalContext} from './context/context'
+import {useGlobalContext} from '../context/context'
 function Table() {
     const {countries} = useGlobalContext();
     let tempCountries = [...countries];

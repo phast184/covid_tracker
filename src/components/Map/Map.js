@@ -1,14 +1,19 @@
 import React from "react";
 import { MapContainer as LeafletMap, TileLayer } from "react-leaflet";
-import { useGlobalContext } from "./context/context";
+import { useGlobalContext } from "../../context/context";
 import "./Map.css";
-import { drawCircle } from "./utils/helpers";
+import { drawCircle } from "../../utils/helpers";
+import ChangeView from './ChangeView'
+
 function Map() {
   const { mapCenter, mapZoom, countries, caseType } = useGlobalContext();
   console.log(mapCenter)
+
+
   return (
     <div className="map">
       <LeafletMap center={mapCenter} zoom={mapZoom}>
+        <ChangeView center={mapCenter} zoom={mapZoom} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
