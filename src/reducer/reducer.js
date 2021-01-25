@@ -6,6 +6,7 @@ import {
   LOAD_DATA_ALL,
   LOAD_HISTORICAL_COUNTRY,
   SET_CASE_TYPE,
+  SET_TYPE_INPUT,
 } from "../context/actions";
 const reducer = (state, action) => {
   if (action.type === LOAD_DATA_COUNTRIES) {
@@ -75,6 +76,13 @@ const reducer = (state, action) => {
       ...state,
       caseType: action.payload,
     };
+  }
+
+  if (action.type === SET_TYPE_INPUT){
+    return{
+      ...state,
+      typeInput: action.payload
+    }
   }
   return state;
 };

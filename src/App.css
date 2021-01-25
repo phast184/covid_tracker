@@ -24,7 +24,6 @@ body {
   justify-content: space-between;
 }
 
-
 .app__header > h1 {
   color: #fc3c3c;
   font-size: 2rem;
@@ -37,29 +36,37 @@ body {
   flex-direction: row;
 }
 
-
-
 /*app__right*/
-.app__information > h3{
+.app__information > h3,
+#title_header {
   color: #6a5d5d;
   font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
-
-@media (max-width: 900px){
-  .app{
+.app__right__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#title_header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+@media (max-width: 900px) {
+  .app {
     display: flex;
     flex-direction: column;
   }
 
-  .app__left{
+  .app__left {
     padding-bottom: 20px;
   }
-
 }
-@media (max-width: 400px){
-  .app__stat{
+@media (max-width: 400px) {
+  .app__stat {
     flex-direction: column;
   }
 }

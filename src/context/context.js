@@ -16,6 +16,7 @@ import {
   SET_COUNTRY_INPUT,
   LOAD_HISTORICAL_COUNTRY,
   SET_CASE_TYPE,
+  SET_TYPE_INPUT,
 } from "./actions";
 
 const initialState = {
@@ -31,6 +32,17 @@ const initialState = {
     lng: -40.4796,
   },
   mapZoom: 3,
+  typeInputData: [
+    { type: "cases", name: "Cases" },
+    { type: "active", name: "Active Cases" },
+    { type: "recovered", name: "Recovered" },
+    { type: "tests", name: "Tests" },
+    { type: "deaths", name: "Deaths" },
+    { type: "critical", name: "Critical Cases" },
+    { type: "testsPerOneMillion", name: "Tests / Million" },
+    { type: "casesPerOneMillion", name: "Cases / Million" },
+  ],
+  typeInput: "cases",
 };
 const GlobalContext = React.createContext();
 export const ContextProvider = ({ children }) => {
@@ -62,7 +74,9 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: SET_CASE_TYPE, payload: type });
   };
 
-
+  const setTypeInput = (e) => {
+    dispatch({ type: SET_TYPE_INPUT, payload: e.target.value });
+  };
   /**Every time there is a change in inputCountry load new country data */
   useEffect(() => {
     const fetchHistorical = async () => {
@@ -98,7 +112,13 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ ...state, sortCountries, setCountryInput, setCaseType }}
+      value={{
+        ...state,
+        sortCountries,
+        setCountryInput,
+        setCaseType,
+        setTypeInput,
+      }}
     >
       {children}
     </GlobalContext.Provider>

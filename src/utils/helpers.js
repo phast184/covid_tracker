@@ -82,3 +82,6 @@ export const drawCircle = (data, casesType) =>
   ));
 
   
+export const sortData = (data, type) => {
+  return data.sort((a,b) => b[type] - a[type])
+}

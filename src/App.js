@@ -12,9 +12,9 @@ import "./App.css";
 import InfoBox from "./components/InfoBox";
 import Table from "./components/Table";
 import Map from "./components/Map/Map";
-import LineGraph from './components/LineGraph'
+import LineGraph from "./components/LineGraph";
 import numeral from "numeral";
-import "leaflet/dist/leaflet.css"
+import "leaflet/dist/leaflet.css";
 
 function App() {
   // const [country, setCountry] = useState("worldwide");
@@ -24,9 +24,13 @@ function App() {
     countryInput,
     setCountryInput,
     setCaseType,
-    caseType
+    caseType,
+    typeInputData,
+    typeInput,
+    setTypeInput,
   } = useGlobalContext();
 
+  console.log(typeInput);
   return (
     <div className="app">
       <div className="app__left">
@@ -55,8 +59,8 @@ function App() {
         <div className="app__stat">
           <InfoBox
             title="Today Coronavirus Cases"
-            onClick={(e) => setCaseType('cases')}
-            active = {caseType === 'cases'}
+            onClick={(e) => setCaseType("cases")}
+            active={caseType === "cases"}
             cases={numeral(country.todayCases).format("0.0a")}
             total={numeral(country.cases).format("0.0a")}
             isRed
@@ -65,14 +69,14 @@ function App() {
             title="Today Recovered People"
             cases={numeral(country.todayRecovered).format("0.0a")}
             onClick={(e) => setCaseType("recovered")}
-            active = {caseType === 'recovered'}
+            active={caseType === "recovered"}
             total={numeral(country.recovered).format("0.0a")}
           />
           <InfoBox
             title="Today Death"
             cases={numeral(country.todayDeaths).format("0.0a")}
             onClick={(e) => setCaseType("deaths")}
-            active = {caseType === 'deaths'}
+            active={caseType === "deaths"}
             total={numeral(country.deaths).format("0.0a")}
             isRed
           />
@@ -83,9 +87,31 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <div className="app__information">
-            <h3>Live Cases By Country</h3>
+            <div className="app__right__header">
+              <div id = "title_header">
+                <h4>Live Stats By Country</h4>
+              </div>
+
+              <FormControl className="app_dropDown">
+                <Select
+                  variant="outlined"
+                  value={typeInput}
+                  onChange={(e) => setTypeInput(e)}
+                >
+                  {typeInputData.map((typeInput, index) => {
+                    return (
+                      <MenuItem value={typeInput.type} key={index}>
+                        {typeInput.name}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+            </div>
             <Table></Table>
-            <h3 style = {{textTransform: 'capitalize'}}>{countryInput} line graph</h3>
+            <h3 style={{ textTransform: "capitalize" }}>
+              {countryInput} line graph
+            </h3>
             <LineGraph />
           </div>
         </CardContent>
