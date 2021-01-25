@@ -59,7 +59,26 @@ export const drawCircle = (data, casesType) =>
       radius={
         Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
       }
-    ></Circle>
+    >
+      <Popup>
+        <div className="info-container">
+          <div
+            className="info-flag"
+            style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
+          ></div>
+          <div className="info-name">{country.country}</div>
+          <div className="info-active">
+            Active: {numeral(country.active).format("0,0")}
+          </div>
+          <div className="info-test">
+            Test: {numeral(country.tests).format("0,0")}
+          </div>
+          <div className="info-critical">
+            Critical cases: {numeral(country.critical).format("0,0")}
+          </div>
+        </div>
+      </Popup>
+    </Circle>
   ));
 
   

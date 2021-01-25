@@ -51,7 +51,10 @@ body {
   .app{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+  }
+
+  .app__left{
+    padding-bottom: 20px;
   }
 
 }
