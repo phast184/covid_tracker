@@ -12,7 +12,6 @@ import {
   LOAD_DATA_COUNTRIES,
   LOAD_DATA_ALL,
   LOAD_DATA_COUNTRY,
-  SORT_COUNTRIES,
   SET_COUNTRY_INPUT,
   LOAD_HISTORICAL_COUNTRY,
   SET_CASE_TYPE,
@@ -25,7 +24,6 @@ const initialState = {
   countries: [],
   country: {},
   countryInput: "worldwide",
-  sortedCountries: [],
   historicalCountry: {},
   mapCenter: {
     lat: 34.80746,
@@ -61,9 +59,7 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: LOAD_DATA_ALL, payload: data });
   };
 
-  const sortCountries = () => {
-    dispatch({ type: SORT_COUNTRIES });
-  };
+
 
   const setCountryInput = (e) => {
     dispatch({ type: SET_COUNTRY_INPUT, payload: e.target.value });
@@ -107,14 +103,12 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     fetchAll();
     fetchCountries();
-    sortCountries();
   }, []);
 
   return (
     <GlobalContext.Provider
       value={{
         ...state,
-        sortCountries,
         setCountryInput,
         setCaseType,
         setTypeInput,

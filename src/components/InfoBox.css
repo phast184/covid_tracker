@@ -42,7 +42,7 @@
 
 @media (max-width: 400px){
   .infoBox{
-    
+    width: 100%;
     margin-bottom: 20px;
   }
 }

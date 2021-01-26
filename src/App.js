@@ -55,7 +55,10 @@ function App() {
             </Select>
           </FormControl>
         </div>
-
+        <p className="note">
+          *Click on one of the three tags below to see the data of different
+          case type.
+        </p>
         <div className="app__stat">
           <InfoBox
             title="Today Coronavirus Cases"
@@ -88,10 +91,10 @@ function App() {
         <CardContent>
           <div className="app__information">
             <div className="app__right__header">
-              <div id = "title_header">
+              <div id="title_header">
                 <h4>Live Stats By Country</h4>
+                <p className = 'title note'>*Select to see data on <br /> different case type</p>
               </div>
-
               <FormControl className="app_dropDown">
                 <Select
                   variant="outlined"
@@ -109,9 +112,7 @@ function App() {
               </FormControl>
             </div>
             <Table></Table>
-            <h3 style={{ textTransform: "capitalize" }}>
-              {countryInput} line graph
-            </h3>
+            <h4 className = 'graph-header'>{countryInput} line graph</h4>
             <LineGraph />
           </div>
         </CardContent>
