@@ -59,6 +59,9 @@ function App() {
           *Click on one of the three tags below to see the data of different
           case type.
         </p>
+        <p className="note">
+          *Click on the drop down menu to see data of different countries.
+        </p>
         <div className="app__stat">
           <InfoBox
             title="Today Coronavirus Cases"
